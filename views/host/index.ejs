@@ -1,0 +1,31 @@
+<%- include('../partials/head')%>
+<body>
+  <%- include('../partials/nav')%>
+  <header class="text-center m-10">
+    <h2 class="bg-slate-800 text-white rounded-xl font-serif h-20 p-10">this is home page</h2>
+  </header>
+
+  <% if(registerHomes.length >= 1) { %>
+    <h3 class="text-center bg-slate-500 text-white px-5 py-3">The registered homes are:</h3>
+  <% } %>
+
+  <div class="flex justify-around ">
+    <% if(registerHomes.length >= 1) { %>
+      <% registerHomes.forEach(home => { %>
+        <div class="  bg-white shadow-lg rounded-lg p-6 hover:bg-gray-100 transition duration-300    ">
+          <!-- Image -->
+          <img class=" " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRn6mCt0dUEO8fdp9cYMSvsY0jHEM_6qGxOLQ&s" alt="Home image" class="w-full h-40 object-cover rounded-t-lg mb-4">
+
+          <!-- Home details -->
+          <h4 class="text-lg font-semibold mb-2"><%= home.uName %></h4>
+          <p class="text-gray-700 mb-1">House Name: <%= home.houseName %></p>
+          <p class="text-gray-700">Location: <%= home.loc %></p>
+          <button class="bg-green-800 p-2">book</button>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <div class="text-gray-500 text-center p-4 w-full md:w-1/2 mx-auto">No homes available.</div>
+    <% } %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<%- include('../partials/head') %>
+<body>
+  <%- include('../partials/nav') %>
+  
+  <h3 class="text-center mt-3 font-semibold text-red-700 px-5 py-3">
+    <%= editing ? "Edit" : "Register" %>
+  </h3>
+
+  <main>
+    <div class="flex justify-center mt-5">
+      <form class="flex w-[80%] bg-slate-100 p-10 rounded-lg shadow-md gap-10" 
+            action="/<%= editing ? `editHomes/${data.id}` : 'home' %>" 
+            method="post">
+        
+        <!-- Left Section -->
+        <div class="flex-1 flex flex-col justify-between">
+          <input class="bg-slate-200 px-5 py-4 rounded-lg mb-6 w-full" 
+                 type="text" name="loc"
+                 value="<%= editing ? data.location : '' %>"
+                 placeholder="Enter your Location" required>
+          <input class="bg-slate-200 px-5 py-4 rounded-lg mb-6 w-full" 
+                 type="text" name="imgUrl"
+                 value="<%= editing ? data.imgUrl : '' %>"
+                 placeholder="Enter your Home Image URL">
+          <input class="bg-slate-200 px-5 py-4 rounded-lg mb-6 w-full" 
+                 type="text" name="houseName"
+                 value="<%= editing ? data.houseName : '' %>"
+                 placeholder="Enter your House Name">
+          <input class="bg-slate-200 px-5 py-4 rounded-lg mb-6 w-full" 
+                 type="text" name="price"
+                 value="<%= editing ? data.price : '' %>"
+                 placeholder="Enter your House Price">
+        </div>
+        
+        <!-- Right Section -->
+        <div class="flex-1 flex flex-col justify-between">
+          <textarea class="bg-slate-200 px-5 py-4 rounded-lg h-full resize-none mb-6" 
+                    name="desc" 
+                    placeholder="Enter your House Description"><%= editing ? data.desc : '' %></textarea>
+          <input class="bg-red-500 px-5 py-3 rounded-lg text-white cursor-pointer hover:bg-red-700" 
+                 type="submit" 
+                 value="<%= editing ? 'Update' : 'Register' %>">
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
