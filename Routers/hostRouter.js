@@ -9,7 +9,7 @@ const hostRouter=express.Router();
 
 // const rootDir=require('../utils/path');
 
-hostRouter.get('/',hostGet);
+hostRouter.get('/dashboard',hostGet);
 
 hostRouter.get('/host-homelists',getHostLists)
 hostRouter.post('/delete-list/:homeid',deletePost)

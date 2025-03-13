@@ -5,10 +5,7 @@ const path = require('path');
 // local modules
 const app = express();
 
-
-
-
-
+// routers
 const {hostRouter} = require('./Routers/hostRouter');
 const {ratingRouter} = require('./Routers/ratingRouter');
 const {costRouter} = require('./Routers/costRouter');
@@ -25,8 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(rootDir, "public")));
 
 // routes
-app.use(hostRouter);
-app.use(userRouter);
+app.use("/host",hostRouter);
+app.use("/user"/userRouter);
 app.use(costRouter);
 app.use(locRouter);
 app.use(ratingRouter);
