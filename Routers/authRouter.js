@@ -8,10 +8,10 @@ authRouter.get("/signup",(req,res)=>{
 
 authRouter.post("/signup",signup);
 
-authRouter.get("/login",(req,res)=>{
-    res.render('login');
+authRouter.get("/signin",(req,res)=>{
+    res.render('signin');
 });
 
-authRouter.post("/login",login);
+authRouter.post("/signin",signin);
 
 module.exports = authRouter;

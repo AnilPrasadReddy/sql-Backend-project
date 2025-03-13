@@ -1,28 +1,27 @@
 const db = require('../utils/databaseUtil');
-const bcrypt = require('bcryptjs')
-const user = {
+const bcrypt = require('bcryptjs');
+
+const User = {
     createUser: async (name, email, password, role) => {
         try {
-            const hashPassword = await bcryt.hash(password, 10);
-            const query = 'INSERT INTO USER (name,email,password,role) values(?,?,?,?)';
-            const [result] = await db.execute(query, [name, email, hashPassword, role]);
-            return result
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const query = 'INSERT INTO `users` (name, email, password, role) VALUES (?, ?, ?, ?)';
+            const [result] = await db.execute(query, [name, email, hashedPassword, role]);
+            return result;
         } catch (error) {
             throw error;
         }
     },
+
     findByEmail: async (email) => {
         try {
-            const query = 'SELECT * FROM USER WHERE email = ?';
+            const query = 'SELECT * FROM `users` WHERE email = ?';
             const [result] = await db.execute(query, [email]);
-            if (result.length > 0) {
-                return result[0]
-            } else {
-                return null;
-            }
+            return result.length > 0 ? result[0] : null;
         } catch (error) {
             throw error;
         }
-    },
-    
-}
+    }
+};
+
+module.exports = User;
